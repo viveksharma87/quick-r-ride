@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6">
+			Name
+		</div>
+		<div class="col-sm-6">
+			<%= "#{@person.first_name} + #{@person.last_name}" %>
+		</div>
+	</div>
+  <div class="row">
+		<div class="col-sm-6">
+			Email
+		</div>
+		<div class="col-sm-6">
+			<%= @person.email %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			Mobile
+		</div>
+		<div class="col-sm-6">
+			<%= @person.mobile_number %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 text-center">
+			<%= link_to 'Add Vihicle', new_person_vehicle_path(@person.id)%>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title> Quick eRide Login</title>
+    
+</head>
+<body>
+	<% if @person.errors.none? %>
+  <% else %>
+	  <% @person.errors.full_messages.each do |message| %>
+	    <li style="color: red;">
+	    	<%= message %>
+	    </li>
+	  <% end %>
+	<% end %>
+	<%= form_tag(person_vehicles_path(@person.id), :method => "post") do %>
+    <div class="login-box">
+	    <h1>Vehicle Detail</h1>
+	    <div class="textbox">
+	      <i class="fa fa-user"></i>
+	      <%= text_field_tag :number, nil, placeholder: "Vehicle Number"  %>
+	    </div>
+	    <div class="textbox">
+	      <i class="fa fa-lock"></i>
+	      <%= text_field_tag :modal, nil, placeholder: "Modal" %>
+	    </div>
+	    <div class="textbox">
+	      <i class="fa fa-lock"></i>
+	      <%= select_tag 'vehicle_type', options_for_select([["Select" , "" ], ["Two Whealer", "2"], ["Four whealer", "4"]]) %>
+	    </div>
+	    <div class="textbox">
+	      <i class="fa fa-lock"></i>
+	      <%= text_field_tag :seater, nil, placeholder: "Seater" %>
+	    </div>
+	    <!-- <input type="button" class="btn" value="Sign In" /> -->
+	    <%= submit_tag "Create" %>
+	    <% if flash[:error] %>
+		    <div class="row">
+			  	<div class="col-sm-12 text-center">
+				  	<%= flash[:error] %>
+				  	<% flash[:error] = nil %>
+			    </div>
+		    </div>
+		  <% end %>
+	  </div>
+	<% end %>
+</body>
+</html>
