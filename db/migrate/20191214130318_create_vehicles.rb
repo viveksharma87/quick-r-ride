@@ -5,6 +5,8 @@ class CreateVehicles < ActiveRecord::Migration[5.2]
       t.string :number
       t.string :modal
       t.string :seater
+      t.string :image
+      t.integer :avalable, default: 1
       t.references :person, foreign_key: true
 
       t.timestamps

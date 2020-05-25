@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title> Quick eRide Login</title>
+    
+</head>
+<body style="background-image: url('/assets/bg_1.jpg');">
+	<div class="hero-wrap" data-stellar-background-ratio="0.5">
+    <%= render 'partial/header' %>
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text justify-content-start align-items-center">
+        <div class="col-lg-6 col-md-6 ftco-animate d-flex align-items-end">
+        	<div class="text" style="color: white;">
+            <h1 class="mb-4">Now <span>It's easy for you</span> <span>rent a bike and car</span></h1>
+            <p style="font-size: 18px;">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts</p>
+            <a href="/persons/get_person" class="icon-wrap popup-vimeo d-flex align-items-center mt-4">
+            	<div class="icon d-flex align-items-center justify-content-center">
+            		<span class="ion-ios-play"></span>
+            	</div>
+            	<div class="heading-title ml-5">
+	            	<span>Easy steps for renting a bike and car</span>
+            	</div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col"></div>
+        <div class="col-lg-4 col-md-6 mt-0 mt-md-5 d-flex" style="">
+        	<!-- <form action="#" class="request-form ftco-animate"> -->
+          <%= form_tag search_results_searches_path, method: "get", class: "request-form ftco-animate" do %>
+        		<h2>Make your trip</h2>
+    				<div class="form-group">
+    					<label for="" class="label">Pick-up location</label>
+              <%= text_field_tag :pick_point, nil, class: "form-control", placeholder: "City, Airport, Station, etc"%>
+    					<!-- <input type="text" class="form-control" placeholder="City, Airport, Station, etc"> -->
+    				</div>
+    				<div class="form-group">
+    					<label for="" class="label">Drop-off location</label>
+              <%= text_field_tag :drop_off_point, nil, class: "form-control", placeholder: "City, Airport, Station, etc"%>
+    					<!-- <input type="text" class="form-control" placeholder="City, Airport, Station, etc"> -->
+    				</div>
+            <div class="d-flex">
+              <div class="form-group mr-2">
+                <label for="" class="label">Vehicle Type</label>
+                <%= select_tag 'vehicle_type', options_for_select([["Select" , "" ], ["Bike", "1"], ["Car", "2"]]), class: "form-control" %>
+                <!-- <input type="text" class="form-control" id="book_pick_date" placeholder="Date"> -->
+              </div>
+              <div class="form-group ml-2">
+                <label for="" class="label">Select Brand</label>
+                <%= select_tag 'vehicle_brand', options_for_select([["Select" , "" ], ["Hundai", "1"], ["Marut Suzki", "2"], ["Honda", "3"]]), class: "form-control" %>
+                <!-- <input type="text" class="form-control" id="book_off_date" placeholder="Date"> -->
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="form-group mr-2">
+                <label for="" class="label">Year Modal</label>
+                <%= select_tag 'year_modal', options_for_select([["Select" , "" ], ["2008", "2008"], ["2009", "2009"], ["2010", "2010"], ["2011", "2011"], ["2012", "2012"]]), class: "form-control" %>
+                <!-- <input type="text" class="form-control" id="book_pick_date" placeholder="Date"> -->
+              </div>
+              <div class="form-group ml-2">
+                <label for="" class="label">Price Limit</label>
+                <%= select_tag 'vehicle_brand', options_for_select([["Select" , "" ], ["R500", "500"], ["R600", "600"], ["R700", "700"]]), class: "form-control" %>
+                <!-- <input type="text" class="form-control" id="book_off_date" placeholder="Date"> -->
+              </div>
+            </div>
+    				<div class="d-flex">
+    					<div class="form-group mr-2">
+                <label for="" class="label">Pick-up date</label>
+                <%= text_field_tag :pickup_date, '', :class => "pick_date form-control", placeholder: "Date" %>
+                <!-- <input type="text" class="form-control" id="book_pick_date" placeholder="Date"> -->
+              </div>
+              <div class="form-group ml-2">
+                <label for="" class="label">Drop-off date</label>
+                <%= text_field_tag :drop_off_date, '', :class => "drop_date form-control", placeholder: "Date" %>
+                <!-- <input type="text" class="form-control" id="book_off_date" placeholder="Date"> -->
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="" class="label">Pick-up time</label>
+              <%= text_field_tag :pickup_time, '', class: "form-control", id: "time_pick", placeholder: "Time" %>
+              <!-- <input type="text" class="form-control" id="time_pick" placeholder="Time"> -->
+            </div>
+            <div class="form-group">
+              <%= submit_tag "submit", value: "Search Vehicle", class: "btn btn-primary py-3 px-4"%>
+              <!-- <input type="submit" value="Search Vehicle" class="btn btn-primary py-3 px-4"> -->
+            </div>
+    			<!-- </form> -->
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>	
+</body>

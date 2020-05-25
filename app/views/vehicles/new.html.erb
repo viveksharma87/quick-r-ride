@@ -5,8 +5,17 @@
     <title> Quick eRide Login</title>
     
 </head>
-<body>
-	<% if @person.errors.none? %>
+<body class="bg-image">
+	<%= render 'partial/header' %>
+	<div class="container">
+	<div class="row">
+		<div class="col-sm-6">
+			
+		</div>
+		<div class="col-sm-6">
+			<div class="login-box regis">
+	<h1>Vehicle Detail</h1>
+			<% if @person.errors.none? %>
   <% else %>
 	  <% @person.errors.full_messages.each do |message| %>
 	    <li style="color: red;">
@@ -14,9 +23,7 @@
 	    </li>
 	  <% end %>
 	<% end %>
-	<%= form_tag(person_vehicles_path(@person.id), :method => "post") do %>
-    <div class="login-box">
-	    <h1>Vehicle Detail</h1>
+	<%= form_tag person_vehicles_path(@person.id), :method => "post", multipart: true do %>
 	    <div class="textbox">
 	      <i class="fa fa-user"></i>
 	      <%= text_field_tag :number, nil, placeholder: "Vehicle Number"  %>
@@ -33,8 +40,12 @@
 	      <i class="fa fa-lock"></i>
 	      <%= text_field_tag :seater, nil, placeholder: "Seater" %>
 	    </div>
+	    <div class="textbox">
+	  	<i class="fa fa-user"></i>
+	  	<%= file_field_tag :image %>
+	  </div>
 	    <!-- <input type="button" class="btn" value="Sign In" /> -->
-	    <%= submit_tag "Create" %>
+	    <%= submit_tag "Create", class: "btn btn-primary py-3 px-4" %>
 	    <% if flash[:error] %>
 		    <div class="row">
 			  	<div class="col-sm-12 text-center">
@@ -43,7 +54,9 @@
 			    </div>
 		    </div>
 		  <% end %>
-	  </div>
 	<% end %>
+	</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -1,3 +1,81 @@
-<div class="container">
-  	
-</div>
+<body>
+  <%= render 'partial/header' %>
+  <div class="container" style="background-color: #8e887c0f;margin-top: 50px;">
+  	<div class="row" style="width: 40%">
+  		<div class="col-sm-6">
+        <% if @person.present? && @person.image.present? %>
+  			  <%= image_tag(@person.image_url(:thumb)) %>
+        <% elsif @person.present? && @person.gender == "female" %>
+          <%= image_tag "female.jpg", style:"width: 200px; height: 200px;" %>
+        <% else %>
+          <%= image_tag "male.jpg", style:"width: 200px; height: 200px;" %>
+        <% end %>
+  		</div>
+  		<div class="col-sm-6">
+  			<div class="row">
+  				<div class="col-sm-6">
+  					Name
+  				</div>
+  				<div class="col-sm-6">
+  					<%= @person.name %>
+  				</div>
+  			</div>
+  			<div class="row">
+  				<div class="col-sm-6">
+  					Contact Number
+  				</div>
+  				<div class="col-sm-6">
+  					<%= @person.mobile_number %>
+  				</div>
+  			</div>
+  			<div class="row">
+  				<div class="col-sm-6">
+  					Email
+  				</div>
+  				<div class="col-sm-6">
+  					<%= @person.email %>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+    <div class="row">
+      <%= link_to '<button type="button">Edit</button>'.html_safe%>
+    </div>
+    <% @vehicles.each do |vehicle| %>
+      <div class="row" style="width: 70%;">
+      <div class="col-sm-6">
+        <%= image_tag vehicle.image_url, :class=>"image_size" %>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-6">
+            Vehicle Type
+          </div>
+          <div class="col-sm-6">
+            <%= vehicle.type %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            Vehicle Number
+          </div>
+          <div class="col-sm-6">
+            <%= vehicle.number %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            Passenger Count
+          </div>
+          <div class="col-sm-6">
+            <%= vehicle.seater %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <div class="row" style="margin-left: 25px;">
+      <%= link_to '<button type="button">Add New Vehicle</button>'.html_safe, new_person_vehicle_path(@person.id) %>
+    </div>
+  </div>
+</body>

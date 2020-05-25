@@ -5,18 +5,26 @@
     <title> Quick eRide Login</title>
     
 </head>
-<body style="background-image: url('/assets/car-7.jpg');">
-<div class="login-box regis">
-	<h1>Registration</h1>
-  <% if @person.errors.none? %>
+<body style="background-image: url('/assets/bg_1.jpg');">
+	<%= render 'partial/header' %>
+	<div class="container">
+	<div class="row">
+		<div class="col-sm-6">
+			
+		</div>
+		<div class="col-sm-6">
+	<div class="login-box regis" style="position: relative;">
+	<h1 style="color: white;">Registration</h1>
+  <% if flash[:error].blank? %>
   <% else %>
-	  <% @person.errors.full_messages.each do |message| %>
+	  <% flash[:error].each do |message| %>
 	    <li style="color: red;">
 	    	<%= message %>
 	    </li>
 	  <% end %>
+	  <% flash[:error] = nil %>
 	<% end %>
-	<%= form_tag(persons_path, :method => "post") do %>
+	<%= form_tag persons_path, :method => "post", multipart: true do %>
     <div class="textbox">
       <i class="fa fa-user"></i>
   		<%= text_field_tag :first_name, nil, placeholder: "First Name" %>
@@ -28,6 +36,10 @@
 	  <div class="textbox">
 	  	<i class="fa fa-user"></i>
 	  	<%= text_field_tag :user_name, nil, placeholder: "User Name" %>
+	  </div>
+	  <div class="textbox">
+	  	<i class="fa fa-user"></i>
+	    <%= select_tag 'gender', options_for_select([["Male" , "male" ], ["Female", "female"]]) %>
 	  </div>
 	  <div class="textbox">
 	  	<i class="fa fa-user"></i>
@@ -49,9 +61,16 @@
 	  	<i class="fa fa-user"></i>
 	  	<%= text_field_tag :address, nil, placeholder: "Address"  %>
 	  </div>
-	  <%= submit_tag "Create" %>
+	  <div class="textbox">
+	  	<i class="fa fa-user"></i>
+	  	<%= file_field_tag :image, style: "color: white;" %>
+	  </div>
+	  <%= submit_tag "Create", class: "btn btn-primary py-3 px-4"%>
 	<% end %>
 </div>
+</div>
+		</div>
+	</div>
 </body>
 </html>
 <!-- <!DOCTYPE html>

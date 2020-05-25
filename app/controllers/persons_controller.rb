@@ -12,18 +12,18 @@ class PersonsController < ApplicationController
 		if person.present? && !person.errors.any?
 			if person.present?
 				if person.password == params[:password]
-		      redirect_to person_vehicles_path(person.id)
+		      redirect_to person_path(person.id)
 		    else
 		    	flash[:error] = "User Name/Password is incurrect"
-		    	render :get_person
+		    	redirect_to get_person_persons_path
 		    end
 		  else
-			  flash[:error] = "Record not fount, Register your self"
-			  render :get_person
+			  flash[:error] = "Record not found, Register your self"
+			  redirect_to get_person_persons_path
 		  end
 		else
-			flash[:error] = "Record not fount, Register your self"
-			render :get_person
+			flash[:error] = "Record not found, Register your self"
+			redirect_to get_person_persons_path
 		end
 	end
 
@@ -49,19 +49,23 @@ class PersonsController < ApplicationController
 	def create
 		@person = Person.create(person_params)
 		if @person.errors.any?
-			render :new
+			flash[:error] = @person.errors.full_messages.collect{|mes| mes}
+			redirect_to new_person_path
 		else
       redirect_to new_person_vehicle_path(@person.id)
     end
 	end
 
 	def show
-		@person = Person.where(["email = ? or mobile_number = ?", params[:find_by], params[:find_by]]).first
+		@person = Person.find(params[:id])
+		if @person.present?
+		  @vehicles = @person.vehicles
+		end
 	end
 
 	private
   def person_params
-    params.permit(:first_name, :last_name, :mobile_number, :email, :address, :user_name, :password, :password_confirmation)
+    params.permit(:first_name, :last_name, :mobile_number, :email, :address, :user_name, :password, :image, :password_confirmation, :gender)
   end
 
   def find_person

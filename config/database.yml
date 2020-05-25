@@ -15,7 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: new
-  # socket: /var/run/mysqld/mysqld.sock
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
@@ -50,4 +50,7 @@ test:
 production:
   <<: *default
   database: e_ride_app_production
-  url: <%= ENV['DATABASE_URL'] %>
+  secret_key_base: <%=ENV["SECRET_KEY_BASE"]%>
+  secret_key_base: 9d7bc6c3d7905ec7a7ce15bc3ee72b63ec82c973025454f6ec3905b3409b17f0a6718a78ac7ab5927c807035a39f3f7aa618e6693638474264296fe3081a84e1
+  username: root
+  password: new

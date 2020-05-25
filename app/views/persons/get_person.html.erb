@@ -5,41 +5,41 @@
     <title> Quick eRide Login</title>
     
 </head>
-<body>
-	<% if false#flash[:error].present? %>
-	  <div class="row">
-	  	<div class="col-sm-12 text-center">
-		  	<%= flash[:error] %>
-		  	<% flash[:error] = nil %>
-	    </div>
-	  </div>
-	  <div class="row">
-	  	<div class="col-sm-12 text-center">
-	  		<%= link_to 'Back', get_person_persons_path %>
-	  	</div>
-	  </div>
-	<% else %>
-	<%= form_tag(login_persons_path, :method => "post") do %>
-    <div class="login-box">
-	    <h1>Login</h1>
-	    <div class="textbox">
-	      <i class="fa fa-user"></i>
-	      <%= text_field_tag :user_name, nil, placeholder: "Username/Email/Phone"  %>
-	    </div>
-	    <div class="textbox">
-	      <i class="fa fa-lock"></i>
-	      <%= password_field_tag :password, nil, placeholder: "Password" %>
-	    </div>
-	    <!-- <input type="button" class="btn" value="Sign In" /> -->
-	    <%= submit_tag "Sign In", data: { disable_with: "Please wait.." } %> <%= link_to '<button type="button">New Registration</button>'.html_safe, new_person_path %>
-	    <div class="row">
-		  	<div class="col-sm-12 text-center" style="color: red;">
+<body class="bg-image">
+	<div class="login-box">
+		<% if false#flash[:error].present? %>
+		  <div class="row">
+		  	<div class="col-sm-12 text-center">
 			  	<%= flash[:error] %>
 			  	<% flash[:error] = nil %>
 		    </div>
-	  </div>
-	  </div>
-	  <% end %>
-	<% end %>
+		  </div>
+		  <div class="row">
+		  	<div class="col-sm-12 text-center">
+		  		<%= link_to 'Back', get_person_persons_path %>
+		  	</div>
+		  </div>
+		<% else %>
+		<%= form_tag(login_persons_path, :method => "post") do %>
+		    <h1 style="color: white;">Login</h1>
+		    <div class="textbox">
+		      <i class="fa fa-user"></i>
+		      <%= text_field_tag :user_name, nil, placeholder: "Username/Email/Phone"  %>
+		    </div>
+		    <div class="textbox">
+		      <i class="fa fa-lock"></i>
+		      <%= password_field_tag :password, nil, placeholder: "Password" %>
+		    </div>
+		    <!-- <input type="button" class="btn" value="Sign In" /> -->
+		    <%= submit_tag "Sign In", data: { disable_with: "Please wait.." } %> <%= link_to '<button type="button">New Registration</button>'.html_safe, new_person_path %>
+		    <div class="row">
+			  	<div class="col-sm-12 text-center" style="color: red;">
+				  	<%= flash[:error] %>
+				  	<% flash[:error] = nil %>
+			    </div>
+		  </div>  
+		  <% end %>
+		<% end %>
+	</div>
 </body>
 </html>

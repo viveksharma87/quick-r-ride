@@ -10,6 +10,8 @@ gem 'font_awesome5_rails'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+gem 'sinatra'
+gem 'rack', '>= 2.0.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -19,6 +21,7 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
 gem 'rails_12factor', group: :production
+gem 'font-awesome-sass', '~> 5.12.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
@@ -28,6 +31,13 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+gem 'carrierwave', '~> 2.0'
+gem 'mini_magick'
+# gem 'fog'
+gem 'bootstrap-datepicker-rails'
+gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
+gem "unicorn"
+gem "thin"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

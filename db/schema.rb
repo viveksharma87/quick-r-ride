@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2019_12_14_130318) do
     t.string "email"
     t.string "address"
     t.string "password"
+    t.string "gender"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,6 +31,8 @@ ActiveRecord::Schema.define(version: 2019_12_14_130318) do
     t.string "number"
     t.string "modal"
     t.string "seater"
+    t.string "image"
+    t.integer "avalable", default: 1
     t.bigint "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -8,6 +8,8 @@ class CreatePeople < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :address
       t.string :password
+      t.string :gender
+      t.string :image
 
       t.timestamps
     end

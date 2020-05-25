@@ -1,4 +1,5 @@
 class Vehicle < ApplicationRecord
   belongs_to :person
-  validates :number, :modal, :seater, :type, presence: true
+  mount_uploader :image, ImageUploader
+  validates :number, :modal, :seater, :type, :image, presence: true
 end
