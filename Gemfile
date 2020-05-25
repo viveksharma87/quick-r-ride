@@ -35,8 +35,8 @@ gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 # gem 'fog'
 gem 'bootstrap-datepicker-rails'
-#gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
-#gem "unicorn"
+gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
+gem "unicorn"
 gem "thin"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
